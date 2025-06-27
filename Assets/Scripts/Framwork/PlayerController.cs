@@ -52,10 +52,7 @@
                //??怎么去做附身呢？
                SetControlAble(_controlAble.GetFacingObj());
            }
-           if (Input.GetKeyDown(KeyCode.Q))
-           {
-               RemoveControlAble();
-           }
+  
            //TODO: 其它交互
         }
     }

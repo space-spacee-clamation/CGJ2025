@@ -4,6 +4,6 @@
 
         public override IControlAble GetFacingObj()
         {
-            return this;
+            return GameManager.Instance.GetPlayer();
         }
     }
