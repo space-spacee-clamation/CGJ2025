@@ -8,7 +8,7 @@ public enum ControlType
     Down,
     Jump,
     Fire,
-    Next//切换元素
+    Next, //切换元素
 }
 public interface IControlAble
 {

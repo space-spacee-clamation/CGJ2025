@@ -3,10 +3,10 @@ using UnityEngine;
 namespace ControlAble
 {
     /// <summary>
-    /// 使用正常的移动逻辑，包括跳跃和简单移动
+    ///     使用正常的移动逻辑，包括跳跃和简单移动
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public abstract class ANormalMove : ABaseControlAble 
+    public abstract class ANormalMove : ABaseControlAble
     {
         [SerializeField] protected Feet _feet;
         [SerializeField] protected float maxSpeed;
@@ -28,6 +28,13 @@ namespace ControlAble
             OnRelease += Release;
             OnControl += Control;
         }
+        private void Update()
+        {
+            if (tickTime > 0)
+            {
+                tickTime -= Time.deltaTime;
+            }
+        }
         protected void Control()
         {
             rigidbody2D.mass = 1;
@@ -36,14 +43,7 @@ namespace ControlAble
         {
             //暂时先这样吧😋
             rigidbody2D.mass = 1000000;
-            rigidbody2D.velocity = new Vector2(0,rigidbody2D.velocity.y);
-        }
-        private void Update()
-        {
-            if (tickTime > 0)
-            {
-                tickTime -= Time.deltaTime;
-            }
+            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
         public override void Input(ControlType type, object param)
         {
@@ -71,7 +71,7 @@ namespace ControlAble
                     GetOtherInput(type, param);
                     break;
             }
-            
+
         }
         protected virtual void Fire()
         {
@@ -79,7 +79,7 @@ namespace ControlAble
         }
         protected virtual void GetOtherInput(ControlType type, object o)
         {
-            
+
         }
         protected virtual void Jump()
         {
@@ -94,7 +94,7 @@ namespace ControlAble
         protected virtual void HorizontalMove(float  value)
         {
             rigidbody2D.velocity = new Vector2(value * maxSpeed, rigidbody2D.velocity.y);
-            transform.localScale = new Vector3((MathF.Abs(value)>0.05? Mathf.Sign( value):transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(MathF.Abs(value) > 0.05 ? Mathf.Sign( value) : transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         protected virtual void VerticalMove(float  value)
         {

@@ -1,25 +1,24 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 public enum PowerEnum
 {
-    Null,//没使用
+    Null, //没使用
     Water,
-     Fire,
+    Fire,
 }
 public class PowerUseAbleComponent : MonoBehaviour
 {
-    protected Dictionary<PowerEnum, Action> powerDic=new Dictionary<PowerEnum, Action>();
+    protected Dictionary<PowerEnum, Action> powerDic = new Dictionary<PowerEnum, Action>();
     public bool CouldUsePower(PowerEnum eEnum)
     {
         return powerDic.ContainsKey(eEnum);
     }
     public void UsePower(PowerEnum eEnum)
     {
-       if (powerDic.TryGetValue(eEnum,out Action action))action.Invoke();
+        if (powerDic.TryGetValue(eEnum, out Action action)) action.Invoke();
     }
-    public void AddCallBack(PowerEnum key,Action pw)
+    public void AddCallBack(PowerEnum key, Action pw)
     {
         if (powerDic.ContainsKey(key))
         {
@@ -30,7 +29,7 @@ public class PowerUseAbleComponent : MonoBehaviour
             powerDic.Add(key, pw);
         }
     }
-    public void RemoveCallBack(PowerEnum key,Action pw)
+    public void RemoveCallBack(PowerEnum key, Action pw)
     {
         if (powerDic.ContainsKey(key))
         {

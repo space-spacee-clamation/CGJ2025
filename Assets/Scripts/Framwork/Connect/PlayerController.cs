@@ -1,69 +1,67 @@
-﻿
-    using System;
-    using UnityEngine;
-    /// <summary>
-    /// 玩家控制器
-    /// </summary>
-    public class PlayerController : MonoBehaviour
+﻿using UnityEngine;
+/// <summary>
+///     玩家控制器
+/// </summary>
+public class PlayerController : MonoBehaviour
+{
+    public static PlayerController Instance;
+    private IControlAble _controlAble;
+    private void Awake()
     {
-        public static PlayerController Instance;
-        private IControlAble _controlAble;
-        private void Awake()
+        if (Instance != null) Destroy(gameObject);
+        else
         {
-            if(Instance!=null) Destroy(gameObject);
-            else
-            {
-                Instance = this;
-            }
-        }
-        public void Start()
-        {
-            _controlAble?.OnControl?.Invoke();
-        }
-        private void Update()
-        {
-            InputUpdate();
-        }
-        public void RemoveControlAble()
-        {
-            _controlAble?.OnRelease?.Invoke();
-            _controlAble = GameManager.Instance.GetPlayer();
-            _controlAble?.OnControl?.Invoke();
-        }
-        public void SetControlAble(IControlAble controlAble)
-        {
-            if(controlAble==_controlAble) return;
-            if (controlAble != null) _controlAble.OnRelease?.Invoke();
-            _controlAble = controlAble;
-            _controlAble?.OnControl?.Invoke();
-        }
-        public void InputUpdate()
-        {
-            //默认值
-            if(_controlAble==null) _controlAble=GameManager.Instance.GetPlayer();
-            
-           var tempHorizontal= Input.GetAxis("Horizontal");
-           if (tempHorizontal != 0)
-           {
-               _controlAble.Input(tempHorizontal > 0 ? ControlType.Right : ControlType.Left,tempHorizontal);
-           }
-           var tempVertical = Input.GetAxis("Vertical");
-           if (tempVertical != 0)
-           {
-               _controlAble.Input(tempVertical > 0 ? ControlType.UP : ControlType.Down,tempVertical);
-           }
-           if (Input.GetKeyDown(KeyCode.Space))
-           {
-               _controlAble.Input(ControlType.Jump,null);
-           }
-           if (Input.GetKeyDown(KeyCode.F))
-           {
-               _controlAble.Input(ControlType.Fire,null);
-           }
-           if (Input.GetKeyDown(KeyCode.E))
-           {
-               _controlAble.Input(ControlType.Next,null);
-           }
-           //TODO: 其它交互
+            Instance = this;
         }
     }
+    public void Start()
+    {
+        _controlAble?.OnControl?.Invoke();
+    }
+    private void Update()
+    {
+        InputUpdate();
+    }
+    public void RemoveControlAble()
+    {
+        _controlAble?.OnRelease?.Invoke();
+        _controlAble = GameManager.Instance.GetPlayer();
+        _controlAble?.OnControl?.Invoke();
+    }
+    public void SetControlAble(IControlAble controlAble)
+    {
+        if (controlAble == _controlAble) return;
+        if (controlAble != null) _controlAble.OnRelease?.Invoke();
+        _controlAble = controlAble;
+        _controlAble?.OnControl?.Invoke();
+    }
+    public void InputUpdate()
+    {
+        //默认值
+        if (_controlAble == null) _controlAble = GameManager.Instance.GetPlayer();
+
+        float tempHorizontal = Input.GetAxis("Horizontal");
+        if (tempHorizontal != 0)
+        {
+            _controlAble.Input(tempHorizontal > 0 ? ControlType.Right : ControlType.Left, tempHorizontal);
+        }
+        float tempVertical = Input.GetAxis("Vertical");
+        if (tempVertical != 0)
+        {
+            _controlAble.Input(tempVertical > 0 ? ControlType.UP : ControlType.Down, tempVertical);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _controlAble.Input(ControlType.Jump, null);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            _controlAble.Input(ControlType.Fire, null);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _controlAble.Input(ControlType.Next, null);
+        }
+        //TODO: 其它交互
+    }
+}
