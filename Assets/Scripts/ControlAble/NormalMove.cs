@@ -32,11 +32,11 @@ namespace ControlAble
             OnRelease += Release;
             OnControl += Control;
         }
-        private void Control()
+        protected void Control()
         {
             rigidbody2D.mass = 1;
         }
-        private void Release()
+        protected void Release()
         {
             //暂时先这样吧😋
             rigidbody2D.mass = 1000000;
