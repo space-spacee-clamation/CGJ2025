@@ -1,5 +1,5 @@
 ﻿    using ControlAble;
-    public class Stone : ANormalMove
+    public class StoneControlAble : ANormalMove
     {
         public override IControlAble GetFacingObj()
         {

@@ -10,7 +10,7 @@ namespace ControlAble
     {
         [SerializeField] protected Feet _feet;
         [SerializeField] protected float maxSpeed;
-        [SerializeField] protected float jumpForce;
+        [SerializeField] protected float jumpDis;
         [SerializeField] protected bool isGround;
         protected Rigidbody2D rigidbody2D;
         /// <summary>
@@ -20,14 +20,10 @@ namespace ControlAble
         private void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
-            _feet = GetComponentInChildren<Feet>();
         }
         private void Start()
         {
             //TODO : 插音效
-            _feet.OnGround += () => {
-                isGround = true;
-            };
             OnStart();
             OnRelease += Release;
             OnControl += Control;
@@ -40,6 +36,7 @@ namespace ControlAble
         {
             //暂时先这样吧😋
             rigidbody2D.mass = 1000000;
+            rigidbody2D.velocity = new Vector2(0,rigidbody2D.velocity.y);
         }
         private void Update()
         {
@@ -71,9 +68,11 @@ namespace ControlAble
         }
         protected virtual void Jump()
         {
-            if (isGround && tickTime <= 0)
+            if (_feet.IsGround && tickTime <= 0)
             {
-                rigidbody2D.AddForce(new Vector2(0,  jumpForce * rigidbody2D.mass), ForceMode2D.Impulse);
+                float gravity = Physics2D.gravity.y;
+                float jumpVelocity = Mathf.Sqrt(-2 * gravity * jumpDis);
+                rigidbody2D.AddForce(new Vector2(0,  jumpVelocity), ForceMode2D.Impulse);
                 tickTime = 0.5f;
             }
         }

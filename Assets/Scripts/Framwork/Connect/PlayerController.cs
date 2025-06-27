@@ -24,7 +24,7 @@
         public void SetControlAble(IControlAble controlAble)
         {
             if(controlAble==_controlAble) return;
-            if (controlAble != null) controlAble.OnRelease?.Invoke();
+            if (controlAble != null) _controlAble.OnRelease?.Invoke();
             _controlAble = controlAble;
             _controlAble?.OnControl?.Invoke();
         }
@@ -49,10 +49,9 @@
            }
            if (Input.GetKeyDown(KeyCode.F))
            {
-               //??怎么去做附身呢？
+               // TODO: 元素之力！！！
                SetControlAble(_controlAble.GetFacingObj());
            }
-  
            //TODO: 其它交互
         }
     }

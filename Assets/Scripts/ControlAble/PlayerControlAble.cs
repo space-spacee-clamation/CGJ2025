@@ -1,13 +1,11 @@
 ﻿    using ControlAble;
     using UnityEngine;
-    public class Player : ANormalMove
+    public class PlayerControlAble : ANormalMove
     {
         [SerializeField] protected Eye _eye;
-        
-        
         public override IControlAble GetFacingObj()
         {
-            return   _eye.GetFacingObjControlAble();
+            return   _eye.GetFacingObjComponent<IControlAble>();
         }
         protected override void OnStart()
         {

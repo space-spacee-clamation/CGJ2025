@@ -8,25 +8,26 @@ using UnityEngine;
 /// </summary>
 public class Eye : MonoBehaviour
 {
-    [SerializeField] private Transform bodyTran;
+    [SerializeField] private Transform eyePoint;
     private IControlAble bodyAble;
     [SerializeField] private float viewDis;
     [SerializeField] private LayerMask _mask;
 
     private void Awake()
     {
-        bodyAble=bodyTran.GetComponent<IControlAble>();
+        bodyAble=gameObject.GetComponent<IControlAble>();
     }
-    public IControlAble GetFacingObjControlAble()
+    public  T GetFacingObjComponent<T>()
     {
-        var res = Physics2D.RaycastAll(transform.position, bodyTran.localScale.x  * Vector3.right, viewDis,_mask);
-        IControlAble minDisRes=null;
+        var res = Physics2D.RaycastAll(eyePoint.position, transform.localScale.x  * Vector3.right, viewDis,_mask);
+        T minDisRes=default;
         float minDIS=float.MaxValue;
+       T  bodyCo= gameObject.GetComponent<T>();
         foreach (var result in res)
         {
-           if (result.collider.TryGetComponent(out IControlAble able))
+           if (result.collider.TryGetComponent(out T able))
            {
-               if(bodyAble==able)continue;
+               if(bodyCo.Equals( able))continue;
                if (minDIS>result.distance)
                {
                    minDisRes=able;
@@ -34,16 +35,11 @@ public class Eye : MonoBehaviour
                }
            }
         }
-        Debug.Log("咩咩咩咩");
         return minDisRes;        
-    }
-    public void SetBodyTrans(Transform body)
-    {
-        bodyTran = body;
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position+bodyTran.localScale.x*viewDis *Vector3.right);
+        Gizmos.DrawLine(eyePoint.position, eyePoint.position+transform.localScale.x*viewDis *Vector3.right);
     }
 }

@@ -1,25 +1,24 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class Feet : MonoBehaviour
 {
-    public Action OnGround;
-    public Action OnAir;
-    [SerializeField] private float rayLen=2f;
+    [SerializeField] private float rayLen = 2f;
     [SerializeField] private LayerMask layerMask;
-    bool isGround;
+    public Action OnAir;
+    public Action OnGround;
+    public bool IsGround { get; private set; }
     public void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLen,layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLen, layerMask);
         if (hit.collider != null)
         {
             OnGround?.Invoke();
-            isGround = true;
+            IsGround = true;
         }
-        else if(isGround)
+        else if (IsGround)
         {
             OnAir?.Invoke();
+            IsGround = false;
         }
     }
     private void OnDrawGizmosSelected()

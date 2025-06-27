@@ -2,7 +2,7 @@
 using UnityEngine;
 namespace ControlAble
 {
-    public class Tree : ABaseControlAble
+    public class TreeControlAble : ABaseControlAble
     {
         [SerializeField] float growUpSpeed;
         [SerializeField] private float maxHight;
