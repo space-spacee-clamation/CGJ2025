@@ -27,7 +27,7 @@ public class Eye : MonoBehaviour
         {
            if (result.collider.TryGetComponent(out T able))
            {
-               if(bodyCo.Equals( able))continue;
+               if(bodyCo!=null && bodyCo.Equals(able))continue;
                if (minDIS>result.distance)
                {
                    minDisRes=able;

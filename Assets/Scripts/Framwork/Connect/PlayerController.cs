@@ -6,7 +6,16 @@
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance;
         private IControlAble _controlAble;
+        private void Awake()
+        {
+            if(Instance!=null) Destroy(gameObject);
+            else
+            {
+                Instance = this;
+            }
+        }
         public void Start()
         {
             _controlAble?.OnControl?.Invoke();
@@ -49,8 +58,11 @@
            }
            if (Input.GetKeyDown(KeyCode.F))
            {
-               // TODO: 元素之力！！！
-               SetControlAble(_controlAble.GetFacingObj());
+               _controlAble.Input(ControlType.Fire,null);
+           }
+           if (Input.GetKeyDown(KeyCode.E))
+           {
+               _controlAble.Input(ControlType.Next,null);
            }
            //TODO: 其它交互
         }

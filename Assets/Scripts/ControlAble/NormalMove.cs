@@ -64,7 +64,22 @@ namespace ControlAble
                 case ControlType.Jump:
                     Jump();
                     break;
+                case ControlType.Fire:
+                    Fire();
+                    break;
+                default:
+                    GetOtherInput(type, param);
+                    break;
             }
+            
+        }
+        protected virtual void Fire()
+        {
+            LeaveControl();
+        }
+        protected virtual void GetOtherInput(ControlType type, object o)
+        {
+            
         }
         protected virtual void Jump()
         {

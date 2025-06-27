@@ -7,6 +7,8 @@ public enum ControlType
     Left,
     Down,
     Jump,
+    Fire,
+    Next//切换元素
 }
 public interface IControlAble
 {
@@ -29,5 +31,9 @@ public abstract class ABaseControlAble : MonoBehaviour, IControlAble
     public abstract IControlAble GetFacingObj() ;
     protected virtual void OnStart()
     {
+    }
+    protected void LeaveControl()
+    {
+        PlayerController.Instance.RemoveControlAble();
     }
 }
