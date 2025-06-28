@@ -17,11 +17,9 @@ public class TreeBlockComponent : MonoBehaviour
     }
     private void GetWater()
     {
-        Debug.Log("AAAAAA");
     }
     private void GetFire()
     {
-        Debug.Log("BBBBBBB");
         StartCoroutine(DestroySelf());
     }
     private IEnumerator DestroySelf()

@@ -7,10 +7,21 @@ using UnityEngine;
 public class Bee : ABaseControlAble , IChangeWithTime
 {
     protected Rigidbody2D rigidbody2D;
+    
     [SerializeField] protected float maxSpeed;
+    [SerializeField] protected float MaxDis;
+    protected float dis;
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+    protected void FixedUpdate()
+    {
+        dis+=maxSpeed*Time.fixedDeltaTime;
+        if (dis >= MaxDis)
+        {
+            
+        }
     }
     protected  void HorizontalMove(float value)
     {

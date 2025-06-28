@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             ControlAble.Input(ControlType.Fire, null);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             ControlAble.Input(ControlType.Next, null);
         }
