@@ -3,18 +3,23 @@ using UnityEngine;
 public class PlayerComponent : ANormalMove
 {
     [SerializeField] protected Eye _eye;
+    [SerializeField] private Animator _animator;
     private void OnEnable()
     {
         GameManager.Instance.SubPlayer(this);
     }
     protected override void OnStart()
     {
-
         _eye = GetComponentInChildren<Eye>();
     }
     protected override void Fire()
     {
         OnFire();
+    }
+    protected override void OnUpdate()
+    {
+        _animator.SetBool("isJump", !_feet.IsGround);
+        _animator.SetBool("isRun", _feet.IsGround &&  Mathf.Abs(rigidbody2D.velocity.x) >0.1f);
     }
     protected override void GetOtherInput(ControlType type, object o)
     {
@@ -23,7 +28,6 @@ public class PlayerComponent : ANormalMove
             PowerManager.Instance.ChangePower(1);
         }
     }
-
     private void OnFire()
     {
         if (!PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
