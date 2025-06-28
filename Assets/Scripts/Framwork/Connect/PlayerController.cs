@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 /// <summary>
 ///     玩家控制器
 /// </summary>
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     private IControlAble controlAble;
     public bool CouldControl=false;
+    [SerializeField] public CinemachineVirtualCamera VirtualCamera;
     private IControlAble ControlAble {
         get
         {
@@ -41,7 +43,6 @@ public class PlayerController : MonoBehaviour
         ControlAble = GameManager.Instance.GetPlayer();
         ControlAble?.OnControl?.Invoke();
     }
-    private float fireCD = 0.1f;
     public void SetControlAble(IControlAble controlAble)
     {
         if (controlAble == ControlAble) return;
@@ -60,43 +61,29 @@ public class PlayerController : MonoBehaviour
         if (tempHorizontal != 0)
         {
             ControlAble.Input(tempHorizontal > 0 ? ControlType.Right : ControlType.Left, tempHorizontal);
-            useTime = true;
         }
         float tempVertical = Input.GetAxis("Vertical");
         if (tempVertical != 0)
         {
             ControlAble.Input(tempVertical > 0 ? ControlType.UP : ControlType.Down, tempVertical);
-            useTime = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ControlAble.Input(ControlType.Jump, null);
-            useTime = true;
         }
-        if (Input.GetKeyDown(KeyCode.F) && fireCD<0)
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ControlAble.Input(ControlType.Fire, null);
-            fireCD = 0.1f;
-            useTime = true;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             ControlAble.Input(ControlType.Next, null);
-            useTime = true;
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             GameManager.Instance.ReStart();
         }
-        if (useTime)
-        {
-            TimeController.Instance.ChangeTick(Time.deltaTime);
-            useTime = false;
-        }
-        if (fireCD>=0)
-        {
-            fireCD -= Time.deltaTime;
-        }
+
         //TODO: 其它交互
     }
     public void SetControllerActive(bool co)

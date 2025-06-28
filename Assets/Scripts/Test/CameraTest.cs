@@ -17,10 +17,10 @@ public class CameraTest : MonoBehaviour
         switch (obj)
         {
             case GameTimeEnum.Day:
-                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x, Color.white, 1);
+                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x, Color.white, ConstClass.TIME_CHANGE_TIME);
                 break;
             case GameTimeEnum.Night:
-                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x,Color.gray, 1);
+                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x,Color.gray, ConstClass.TIME_CHANGE_TIME);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(obj), obj, null);

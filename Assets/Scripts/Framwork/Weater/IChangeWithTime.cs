@@ -1,4 +1,4 @@
-﻿public interface IChangeWithWeather
+﻿public interface IChangeWithTime
 {
     public void ChangeWithWeather(GameTimeEnum time);
 }

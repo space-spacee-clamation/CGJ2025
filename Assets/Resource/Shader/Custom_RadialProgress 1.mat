@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Antialiasing: 0.05
-    - _Progress: 0.7760187
+    - _Progress: 1
     - _StartAngle: 0
     m_Colors: []
   m_BuildTextureStacks: []

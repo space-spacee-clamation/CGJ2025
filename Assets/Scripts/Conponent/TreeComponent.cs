@@ -16,6 +16,7 @@ namespace ControlAble
             pwComponent = GetComponent<PowerUseAbleComponent>();
             pwComponent.AddCallBack(PowerEnum.Water, GetWater);
             pwComponent.AddCallBack(PowerEnum.Fire, GetFire);
+            nowHight = minHight;
         }
 
 
@@ -25,7 +26,7 @@ namespace ControlAble
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.up;
             }
-            else if ( transform.localScale.y > minHight+0.05f)
+            if ( transform.localScale.y > nowHight+0.05f)
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.down;
             }
@@ -59,10 +60,6 @@ namespace ControlAble
         {
             nowHight += 1;
             if (nowHight > maxHight) nowHight = maxHight;
-        }
-        public override IControlAble GetFacingObj()
-        {
-            return GameManager.Instance.GetPlayer();
         }
     }
 }

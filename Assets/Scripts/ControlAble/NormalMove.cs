@@ -21,8 +21,9 @@ namespace ControlAble
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
         }
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             //TODO : 插音效
             OnStart();
             OnRelease += Release;

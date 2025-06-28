@@ -15,7 +15,6 @@ public interface IControlAble
     public Action OnControl { get; }
     public Action OnRelease { get; }
     public void Input(ControlType  type, object  param);
-    public IControlAble GetFacingObj();
     public bool ControllAble();
 }
 public abstract class ABaseControlAble : MonoBehaviour, IControlAble
@@ -29,7 +28,12 @@ public abstract class ABaseControlAble : MonoBehaviour, IControlAble
         protected set;
     }
     public abstract void Input(ControlType type, object param);
-    public abstract IControlAble GetFacingObj() ;
+    protected virtual void Start()
+    {
+        OnControl += () => {
+            PlayerController.Instance.VirtualCamera.Follow = transform;
+        };
+    }
     public virtual bool ControllAble()
     {
         return true;

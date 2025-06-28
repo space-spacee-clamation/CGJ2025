@@ -1,16 +1,17 @@
-﻿using ControlAble;
+﻿using System;
+using Cinemachine;
+using ControlAble;
 using UnityEngine;
 public class PlayerComponent : ANormalMove
 {
     [SerializeField] protected Eye _eye;
-
-    public override IControlAble GetFacingObj()
+    private void OnEnable()
     {
-        return   _eye.GetFacingObjComponent<IControlAble>();
+        GameManager.Instance.SubPlayer(this);
     }
     protected override void OnStart()
     {
-        GameManager.Instance.SubPlayer(this);
+        
         _eye = GetComponentInChildren<Eye>();
     }
     protected override void Fire()
