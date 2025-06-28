@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyePoint: {fileID: 15262383}
-  range: 74.3
+  range: 114.7
   viewDis: 2
   _mask:
     serializedVersion: 2
