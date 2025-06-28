@@ -33,32 +33,32 @@ namespace ControlAble
         }
         private void GetFire()
         {
+
+        }
+        private void GetWater()
+        {
+       
+        }
+        protected override void VerticalMove(float value)
+        {
+            if (nowHight > 0)
+            {
+                GrowUp();
+            }
+            else
+            {
+                GrowDown();
+            }
+        }
+        private void GrowDown()
+        {
             nowHight -= 1;
             if (nowHight < minHight) nowHight = minHight;
         }
-        private void GetWater()
+        private void GrowUp()
         {
             nowHight += 1;
             if (nowHight > maxHight) nowHight = maxHight;
         }
-        //protected override void VerticalMove(float value)
-        //{
-        //    if (nowHight > 0)
-        //    {
-        //        GrowUp();
-        //    }
-        //    else
-        //    {
-        //        GrowDown();
-        //    }
-        //}
-        //private void GrowDown()
-        //{
-
-        //}
-        //private void GrowUp()
-        //{
-
-        //}
     }
 }

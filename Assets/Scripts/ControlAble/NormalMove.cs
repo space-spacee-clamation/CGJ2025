@@ -42,12 +42,9 @@ namespace ControlAble
         }
         protected void Control()
         {
-            rigidbody2D.mass = 1;
         }
         protected void Release()
         {
-            //暂时先这样吧😋
-            rigidbody2D.mass = 1000000;
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
         public override void Input(ControlType type, object param)

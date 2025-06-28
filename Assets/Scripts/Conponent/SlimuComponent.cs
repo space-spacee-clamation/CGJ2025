@@ -2,92 +2,77 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SlimuComponent : ABaseControlAble
 {
-    protected Queue<SingleNode> m_nodeQueue;
+    protected Stack<SingleNode> m_nodeQueue;
     [SerializeField] protected SingleNode headNode;
     protected SingleNode nowNode;
+    [SerializeField]protected int maxCount=5;
     protected override void Start()
     {
         base.Start();
         nowNode = headNode;
-        m_nodeQueue = new Queue<SingleNode>();
+        m_nodeQueue = new Stack<SingleNode>();
+        m_nodeQueue.Push(headNode);
+    }
+    private float creatCD = 0.1f;
+    private void Update()
+    {
+        if (creatCD>0)
+        {
+            creatCD -= Time.deltaTime;
+        }
     }
     public override void Input(ControlType type, object param)
     {
-        
-    }
-}
-public class HeadNode : SingleNode
-{
-    
-}
-public class SingleNode : MonoBehaviour
-{
-    public GameObject nodeNext;
-    public enum FourDir
-    {
-        UP,Down,Left,Right
-    }
-    [SerializeField] protected SpriteRenderer _spriteRenderer;
-    protected SingleNode m_nextNode;
-    protected GameObject CreateNode(FourDir dir)
-    {
-       Vector3 temp=  GetPos( dir);
-       GameObject ga= Instantiate(nodeNext, temp, Quaternion.identity);
-       ga.transform.SetParent(transform);
-       var re = ga.GetComponent<SingleNode>();
-       //检测创建是否合法 
-       if (re && re.CheckNode())
-       {
-           re.ActiveNode();
-           return ga;
-       }
-       else
-       {
-           re.DeletNode();
-           return null;
-       }
-    }
-    private void ActiveNode()
-    {
-        Debug.Log("激活");
-        _spriteRenderer.gameObject.SetActive( true);
-    }
-    private void DeletNode()
-    {
-       //TODO: 删除
-        Destroy(gameObject);
-    }
-    private bool CheckNode()
-    {
-        var res= Physics2D.CircleCastAll(transform.position, 0.45f, Vector3.up);
-        foreach (var rayHIt in res)
+        if(creatCD<0)
+        switch (type)
         {
-            if (rayHIt.transform==this)continue;
-            return false;
-        }
-        return true;
-    }
-    protected Vector3 GetPos(FourDir dir)
-    {
-        switch (dir)
-        {
-            case FourDir.UP:
-                return transform.position+Vector3.up;
+            case ControlType.UP:
+                HandelCreate(SingleNode.FourDir.UP);
                 break;
-            case FourDir.Down:
-                return transform.position+Vector3.down;
+            case ControlType.Right:
+                HandelCreate(SingleNode.FourDir.Right);
                 break;
-            case FourDir.Left:
-                return transform.position+Vector3.left;
+            case ControlType.Left:
+                HandelCreate(SingleNode.FourDir.Left);
                 break;
-            case FourDir.Right:
-                return transform.position+Vector3.right;
+            case ControlType.Down:
+                HandelCreate(SingleNode.FourDir.Down);
                 break;
         }
-        return Vector3.zero;
     }
-    
+    private void HandelCreate(SingleNode.FourDir dir)
+    {
+        var result= nowNode.CreateNode(dir, out var node);
+        switch (result)
+        {
+            case SingleNode.CreatState.Enter:
+                if (maxCount > 0)
+                {
+                    m_nodeQueue.Push(nowNode);
+                    node.ActiveNode();
+                    nowNode = node;
+                    maxCount--;
+                }
+                else
+                {
+                    node.DeletNode();
+                }
+                break;
+            case SingleNode.CreatState.Back:
+                if(nowNode.Equals(headNode))break;
+                nowNode.DeletNode();
+                nowNode = m_nodeQueue.Pop();
+                maxCount++;
+                break;
+            case SingleNode.CreatState.Fail:
+                node.DeletNode();
+                break;
+        }
+        creatCD = 0.1f;
+    }
 }
+
