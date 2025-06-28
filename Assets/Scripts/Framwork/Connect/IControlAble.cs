@@ -19,6 +19,12 @@ public interface IControlAble
 }
 public abstract class ABaseControlAble : MonoBehaviour, IControlAble
 {
+    protected virtual void Start()
+    {
+        OnControl += () => {
+            PlayerController.Instance.VirtualCamera.Follow = transform;
+        };
+    }
     public Action OnControl {
         get;
         protected set;
@@ -28,12 +34,6 @@ public abstract class ABaseControlAble : MonoBehaviour, IControlAble
         protected set;
     }
     public abstract void Input(ControlType type, object param);
-    protected virtual void Start()
-    {
-        OnControl += () => {
-            PlayerController.Instance.VirtualCamera.Follow = transform;
-        };
-    }
     public virtual bool ControllAble()
     {
         return true;

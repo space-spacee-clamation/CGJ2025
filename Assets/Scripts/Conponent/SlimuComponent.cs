@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 public class SlimuComponent : ABaseControlAble
 {
-    protected Stack<SingleNode> m_nodeQueue;
     [SerializeField] protected SingleNode headNode;
+    [SerializeField] protected int maxCount = 5;
+    private      float   creatCD = 0.3f;
+    protected Stack<SingleNode> m_nodeQueue;
     protected SingleNode nowNode;
-    [SerializeField]protected int maxCount=5;
     protected override void Start()
     {
         base.Start();
@@ -17,36 +14,41 @@ public class SlimuComponent : ABaseControlAble
         m_nodeQueue = new Stack<SingleNode>();
         m_nodeQueue.Push(headNode);
     }
-    private float creatCD = 0.1f;
     private void Update()
     {
-        if (creatCD>0)
+        if (creatCD >= 0)
         {
             creatCD -= Time.deltaTime;
         }
     }
     public override void Input(ControlType type, object param)
     {
-        if(creatCD<0)
-        switch (type)
+        if (creatCD < 0)
         {
-            case ControlType.UP:
-                HandelCreate(SingleNode.FourDir.UP);
-                break;
-            case ControlType.Right:
-                HandelCreate(SingleNode.FourDir.Right);
-                break;
-            case ControlType.Left:
-                HandelCreate(SingleNode.FourDir.Left);
-                break;
-            case ControlType.Down:
-                HandelCreate(SingleNode.FourDir.Down);
-                break;
+            switch (type)
+            {
+                case ControlType.UP:
+                    HandelCreate(SingleNode.FourDir.UP);
+                    break;
+                case ControlType.Right:
+                    HandelCreate(SingleNode.FourDir.Right);
+                    break;
+                case ControlType.Left:
+                    HandelCreate(SingleNode.FourDir.Left);
+                    break;
+                case ControlType.Down:
+                    HandelCreate(SingleNode.FourDir.Down);
+                    break;
+            }
+        }
+        if (type.Equals(ControlType.Fire))
+        {
+            LeaveControl();
         }
     }
     private void HandelCreate(SingleNode.FourDir dir)
     {
-        var result= nowNode.CreateNode(dir, out var node);
+        SingleNode.CreatState result = nowNode.CreateNode(dir, out SingleNode node);
         switch (result)
         {
             case SingleNode.CreatState.Enter:
@@ -63,7 +65,7 @@ public class SlimuComponent : ABaseControlAble
                 }
                 break;
             case SingleNode.CreatState.Back:
-                if(nowNode.Equals(headNode))break;
+                if (nowNode.Equals(headNode)) break;
                 nowNode.DeletNode();
                 nowNode = m_nodeQueue.Pop();
                 maxCount++;
@@ -72,7 +74,6 @@ public class SlimuComponent : ABaseControlAble
                 node.DeletNode();
                 break;
         }
-        creatCD = 0.1f;
+        creatCD = 0.3f;
     }
 }
-

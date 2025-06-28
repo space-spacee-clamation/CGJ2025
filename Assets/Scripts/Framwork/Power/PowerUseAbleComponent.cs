@@ -18,10 +18,7 @@ public class PowerUseAbleComponent : MonoBehaviour
     {
         if (powerDic.TryGetValue(eEnum, out Action action) && PowerManager.Instance.TryUsePower(eEnum))
             action.Invoke();
-        else
-        {
-            //TODO: 使用失败(没有力量惹)
-        }
+        //TODO: 使用失败(没有力量惹)
     }
     public void AddCallBack(PowerEnum key, Action pw)
     {

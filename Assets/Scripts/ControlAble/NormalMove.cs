@@ -30,15 +30,15 @@ namespace ControlAble
             OnControl += Control;
             rigidbody2D = GetComponent<Rigidbody2D>();
         }
-        protected virtual void OnStart()
-        {
-        }
         private void Update()
         {
             if (tickTime > 0)
             {
                 tickTime -= Time.deltaTime;
             }
+        }
+        protected virtual void OnStart()
+        {
         }
         protected void Control()
         {

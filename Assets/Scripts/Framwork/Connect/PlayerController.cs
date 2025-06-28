@@ -6,36 +6,31 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    private IControlAble controlAble;
-    public bool CouldControl=false;
+    public bool CouldControl ;
     [SerializeField] public CinemachineVirtualCamera VirtualCamera;
+    private bool useTime = false;
     private IControlAble ControlAble {
-        get
-        {
-          return   controlAble;
-        }
-        set {
-           controlAble = value;
-        }
-    }
-    private void OnEnable()
-    {
-        Destroy(Instance);
-        Instance = this;
+        get;
+        set ;
     }
     public void Start()
     {
         ControlAble?.OnControl?.Invoke();
         GameManager.Instance.OnNewLevel += StartController;
     }
+    private void Update()
+    {
+        if (CouldControl)
+            InputUpdate();
+    }
+    private void OnEnable()
+    {
+        Destroy(Instance);
+        Instance = this;
+    }
     private void StartController()
     {
         CouldControl = true;
-    }
-    private void Update()
-    {
-        if(CouldControl)
-            InputUpdate();
     }
     public void RemoveControlAble()
     {
@@ -45,14 +40,13 @@ public class PlayerController : MonoBehaviour
     }
     public void SetControlAble(IControlAble controlAble)
     {
-        if(controlAble==null) return;
+        if (controlAble == null) return;
         if (controlAble == ControlAble || !controlAble.ControllAble()) return;
         if (controlAble != null) ControlAble?.OnRelease?.Invoke();
         ControlAble = controlAble;
         ControlAble?.OnControl?.Invoke();
     }
-    private bool useTime = false;
-    
+
     public void InputUpdate()
     {
         //默认值

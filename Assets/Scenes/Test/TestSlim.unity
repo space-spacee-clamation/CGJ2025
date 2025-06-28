@@ -2243,7 +2243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214040008}
   - component: {fileID: 1214040009}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,7 +2701,7 @@ GameObject:
   - component: {fileID: 1406633142}
   - component: {fileID: 1406633143}
   - component: {fileID: 1406633144}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SHI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

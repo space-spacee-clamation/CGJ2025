@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum GameTimeEnum
 {
-Day,
-Night
+    Day,
+    Night,
 }
 public class TimeController : MonoBehaviour
 {
-    public static TimeController Instance
-    {
+    private readonly List<GameTimeEnum> _setting = new List<GameTimeEnum>
+        { GameTimeEnum.Day, GameTimeEnum.Night };
+    private int nowIndex ;
+    public Action<GameTimeEnum> OnChangeTime;
+    public static TimeController Instance {
         get;
         private set;
     }
-    public Action<GameTimeEnum> OnChangeTime;
-    private List<GameTimeEnum> _setting=new List<GameTimeEnum>(){GameTimeEnum.Day,GameTimeEnum.Night};
-    private int nowIndex=0;
     public GameTimeEnum GameTime {
-        get; private set;
+        get;
+        private set;
+    }
+
+    public float Time {
+        get;
     }
     private void OnEnable()
     {
@@ -25,8 +30,6 @@ public class TimeController : MonoBehaviour
         Instance = this;
         OnChangeTime = null;
     }
-
-    public float Time { get; private set; }
     public void SubObj(IChangeWithTime obj)
     {
         OnChangeTime += obj.ChangeWithWeather;
@@ -35,7 +38,7 @@ public class TimeController : MonoBehaviour
     private void ChangeWeather(int index)
     {
         nowIndex = index;
-        GameTime=_setting[index];
+        GameTime = _setting[index];
         OnChangeTime?.Invoke(GameTime);
     }
     // public void ChangeTick(float tickTime)
@@ -47,7 +50,7 @@ public class TimeController : MonoBehaviour
     public void ChangeWeatherNext()
     {
         // if(_setting==null)NewLevel();
-        nowIndex = (nowIndex+1)%_setting.Count;
+        nowIndex = (nowIndex + 1) % _setting.Count;
         ChangeWeather(nowIndex);
     }
 }
