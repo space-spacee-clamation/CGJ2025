@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-public class AudioResource
-{
-    public AudioClip clip;
-    public string name;
-}
+
+
+
 public class AudioManager :   MonoBehaviour
 {
     public static AudioManager Instance;

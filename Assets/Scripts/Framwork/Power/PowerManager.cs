@@ -16,6 +16,7 @@ public class PowerManager : MonoBehaviour
             if (!aValue.Equals(PowerEnum.Null))
                 _enumLists.Add((PowerEnum)aValue);
         }
+        
     }
     private void OnEnable()
     {
@@ -58,6 +59,16 @@ public class PowerManager : MonoBehaviour
             if (powerDic[pe] > 0)
             {
                 powerDic[pe]--;
+                switch (pe)
+                {
+                    case PowerEnum.Water:
+                        AudioManager.Instance.PlayOnce("CallWater");
+                        break;
+                    case PowerEnum.Fire:
+                        AudioManager.Instance.PlayOnce("CallFire");
+
+                        break;
+                }
                 return true;
             }
         }

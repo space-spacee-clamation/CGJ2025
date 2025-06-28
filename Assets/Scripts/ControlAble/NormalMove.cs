@@ -40,10 +40,10 @@ namespace ControlAble
         protected virtual void OnStart()
         {
         }
-        protected void Control()
+        protected virtual void Control()
         {
         }
-        protected void Release()
+        protected virtual void Release()
         {
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }

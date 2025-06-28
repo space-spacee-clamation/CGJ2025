@@ -33,31 +33,14 @@ namespace ControlAble
         }
         private void GetFire()
         {
-
+            nowHight -= 1;
+            AudioManager.Instance.PlayOnce("FireTree");
+            if (nowHight < minHight) nowHight = minHight;
         }
         private void GetWater()
         {
-
-        }
-        protected override void VerticalMove(float value)
-        {
-            if (nowHight > 0)
-            {
-                GrowUp();
-            }
-            else
-            {
-                GrowDown();
-            }
-        }
-        private void GrowDown()
-        {
-            nowHight -= 1;
-            if (nowHight < minHight) nowHight = minHight;
-        }
-        private void GrowUp()
-        {
             nowHight += 1;
+            AudioManager.Instance.PlayOnce("WaterTree");
             if (nowHight > maxHight) nowHight = maxHight;
         }
     }
