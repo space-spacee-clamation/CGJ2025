@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-public class TimeMeasion : ABaseControlAble
+public class TimeMeasion : ABaseControlAble , IChangeWithTime
 {
 
+    private Animator _animator;
     protected override void Start()
     {
         base.Start();
+        _animator = GetComponent<Animator>();
+        TimeController.Instance.SubObj(this);
         OnControl += () => {
             BoPian();
         };
@@ -22,5 +26,17 @@ public class TimeMeasion : ABaseControlAble
         TimeController.Instance.ChangeWeatherNext();
         yield return new WaitForSeconds(ConstClass.TIME_CHANGE_TIME);
         LeaveControl();
+    }
+    public void ChangeWithWeather(GameTimeEnum time)
+    {
+        switch (time)
+        {
+            case GameTimeEnum.Day:
+                _animator.SetTrigger("Light");
+                break;
+            case GameTimeEnum.Night:
+                _animator.SetTrigger("Dark");
+                break;
+        }
     }
 }
