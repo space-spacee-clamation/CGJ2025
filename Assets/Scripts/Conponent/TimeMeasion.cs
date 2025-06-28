@@ -18,10 +18,10 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
         switch (time)
         {
             case GameTimeEnum.Day:
-                _animator.SetTrigger("Light");
+                _animator.SetBool("turnDark",false);
                 break;
             case GameTimeEnum.Night:
-                _animator.SetTrigger("Dark");
+                _animator.SetBool("turnDark",true);
                 break;
         }
     }

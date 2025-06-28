@@ -4,31 +4,34 @@ namespace ControlAble
 {
     public class TreeComponent : ANormalMove , IChangeWithTime
     {
-        [SerializeField] private float growUpSpeed;
-        [SerializeField] private float maxHight;
-        [SerializeField] private float minHight;
+        [SerializeField] private float growUpSpeed=1f;
+        [SerializeField] private int maxHight = 3;
+        [SerializeField] private int minHight=1;
 
         [SerializeField] private PowerUseAbleComponent pwComponent;
-        private bool couldWater;
+        private bool couldWater=true;
         private bool isGrowUp ;
         private float nowHight;
 
         /// <summary>
         /// 三个状态
         /// </summary>
-        private List<Sprite> _sprites;
-        private SpriteRenderer renderer;
-        private Transform colliderTrans;
+        [SerializeField] private List<Sprite> _sprites;
+        [SerializeField] private SpriteRenderer renderer;
+       [SerializeField]  private Transform colliderTrans;
         private void Awake()
         {
-            pwComponent = GetComponent<PowerUseAbleComponent>();
             pwComponent.AddCallBack(PowerEnum.Water, GetWater);
             pwComponent.AddCallBack(PowerEnum.Fire, GetFire);
             nowHight = minHight;
         }
+        protected override void OnStart()
+        {
+            base.OnStart();
+            TimeController.Instance.SubObj(this);
+        }
 
-
-        private void Update()
+        override protected void OnUpdate()
         {
             switch (nowHight)
             {
@@ -38,11 +41,11 @@ namespace ControlAble
                     break;
                 case 2:
                     renderer.sprite = _sprites[1];
-                    colliderTrans.localScale= Vector3.one+Vector3.up;
+                    colliderTrans.localScale= Vector3.one+Vector3.up*1.5f;
                     break;
                 case 3:
                     renderer.sprite = _sprites[2];
-                    colliderTrans.localScale= Vector3.one+Vector3.up*2;
+                    colliderTrans.localScale= Vector3.one+Vector3.up*3f;
                     break;
             }
         }
@@ -70,6 +73,7 @@ namespace ControlAble
             {
                 nowHight += 1;
                 AudioManager.Instance.PlayOnce("WaterTree");
+                Debug.Log("????");
                 if (nowHight > maxHight) nowHight = maxHight;
             }
             else

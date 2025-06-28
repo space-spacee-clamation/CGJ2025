@@ -17,13 +17,13 @@ public class SingleNode : MonoBehaviour
     }
     [FormerlySerializedAs("nextNode")] public GameObject prefabNode;
     public GameObject fatherNode ;
-    [SerializeField] protected SpriteRenderer _spriteRenderer;
     protected SingleNode m_nextNode;
+    [SerializeField] protected Animator _animator;
     public CreatState CreateNode(FourDir dir, out SingleNode node)
     {
-        Vector3 temp =  GetPos( dir);
-        GameObject ga = Instantiate(prefabNode, temp, Quaternion.identity);
-        ga.transform.SetParent(transform);
+        Vector3 temp =  GetPos( dir)+Vector3.forward;
+        GameObject ga = Instantiate(prefabNode, temp, GetRot(dir));
+        ga.transform.SetParent(transform,true);
         SingleNode re = ga.GetComponent<SingleNode>();
         CreatState reState = CreatState.Fail;
         //检测创建是否合法 
@@ -44,10 +44,11 @@ public class SingleNode : MonoBehaviour
         node = re;
         return reState;
     }
-    public void ActiveNode()
+    public virtual void ActiveNode()
     {
         Debug.Log("激活");
-        _spriteRenderer.gameObject.SetActive( true);
+        _animator.Play("ShiGrow");
+        gameObject.SetActive(true);
     }
     public void DeletNode()
     {
@@ -56,7 +57,7 @@ public class SingleNode : MonoBehaviour
     }
     private CreatState CheckNode()
     {
-        RaycastHit2D[] res = Physics2D.CircleCastAll(transform.position, 0.45f, Vector3.up);
+        RaycastHit2D[] res = Physics2D.CircleCastAll(transform.position, 0.75f, Vector3.up);
         foreach (RaycastHit2D rayHIt in res)
         {
             if (rayHIt.transform.Equals(transform)) continue;
@@ -65,21 +66,40 @@ public class SingleNode : MonoBehaviour
         }
         return CreatState.Enter;
     }
+    protected Quaternion GetRot(FourDir dir)
+    {
+        switch (dir)
+        {
+            case FourDir.UP:
+                return Quaternion.Euler(0,0,90);
+                break;
+            case FourDir.Left:
+                return Quaternion.Euler(0,0,180);
+                break;
+            case FourDir.Down:
+                return Quaternion.Euler(0, 0, 270);
+                break;
+                case FourDir.Right:
+                    return Quaternion.Euler(0, 0, 0);
+                break;
+        }
+        return Quaternion.identity;
+    }
     protected Vector3 GetPos(FourDir dir)
     {
         switch (dir)
         {
             case FourDir.UP:
-                return transform.position + Vector3.up;
+                return transform.position + Vector3.up*1.5f;
                 break;
             case FourDir.Down:
-                return transform.position + Vector3.down;
+                return transform.position + Vector3.down*1.5f;
                 break;
             case FourDir.Left:
-                return transform.position + Vector3.left;
+                return transform.position + Vector3.left*1.5f;
                 break;
             case FourDir.Right:
-                return transform.position + Vector3.right;
+                return transform.position + Vector3.right*1.5f;
                 break;
         }
         return Vector3.zero;

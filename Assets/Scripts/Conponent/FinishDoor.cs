@@ -2,7 +2,7 @@ using UnityEngine;
 public class FinishDoor : ABaseControlAble
 {
     [SerializeField] private GameObject effect;
-    private string nextLevel;
+    [SerializeField] private string nextLevel;
     private bool open  ;
     private void Start()
     {

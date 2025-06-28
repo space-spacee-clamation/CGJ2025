@@ -13,6 +13,7 @@ public class TreeBlockComponent : MonoBehaviour
     ///     临时特效
     /// </summary>
     [SerializeField] private GameObject boom;
+    [SerializeField] private Animator _animator;
     private void Awake()
     {
         powerUseAbleComponent = GetComponent<PowerUseAbleComponent>();
@@ -29,8 +30,9 @@ public class TreeBlockComponent : MonoBehaviour
     private IEnumerator DestroySelf()
     {
         AudioManager.Instance.PlayOnce("FirePlant");
-        GameObject bb = Instantiate(boom, transform.position, Quaternion.Euler(-90, 0, 0));
-        bb.transform.SetParent(transform);
+        // GameObject bb = Instantiate(boom, transform.position, Quaternion.Euler(-90, 0, 0));
+        // bb.transform.SetParent(transform);
+        _animator.Play("Burn");
         yield return new WaitForSeconds(1);
         Instantiate(leaveObj, leavePos.position, quaternion.identity);
         Destroy(gameObject);

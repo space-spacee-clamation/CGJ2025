@@ -5,7 +5,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
 
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float MaxDis;
-    protected float dis;
+   [SerializeField]  protected float dis;
     private bool isFired;
     private PowerUseAbleComponent powerUseAbleComponent;
     protected Rigidbody2D rigidbody2D;
@@ -24,7 +24,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
         dis += maxSpeed * Time.fixedDeltaTime;
         if (dis >= MaxDis)
         {
-
+            Destroy(gameObject);
         }
     }
     public void ChangeWithWeather(GameTimeEnum time)

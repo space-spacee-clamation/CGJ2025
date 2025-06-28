@@ -75,9 +75,9 @@ public class PowerManager : MonoBehaviour
                         break;
                     case PowerEnum.Fire:
                         AudioManager.Instance.PlayOnce("CallFire");
-
                         break;
                 }
+                ChangePower(PowerEnum.Null);
                 return true;
             }
         }

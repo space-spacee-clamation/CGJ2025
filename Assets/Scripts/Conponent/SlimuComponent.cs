@@ -12,6 +12,7 @@ public class SlimuComponent : ABaseControlAble
         base.Start();
         nowNode = headNode;
         m_nodeQueue = new Stack<SingleNode>();
+        headNode.ActiveNode();
         m_nodeQueue.Push(headNode);
     }
     private void Update()
@@ -75,6 +76,6 @@ public class SlimuComponent : ABaseControlAble
                 node.DeletNode();
                 break;
         }
-        creatCD = 0.3f;
+        creatCD = 0.6f;
     }
 }
