@@ -5,20 +5,20 @@ public class PowerManager : MonoBehaviour
 {
     public static PowerManager Instance;
     private readonly List<PowerEnum> _enumLists = new List<PowerEnum>();
+    private readonly Dictionary<PowerEnum, int> powerDic = new Dictionary<PowerEnum, int>();
     private int nowIndex  ;
     public Action<PowerEnum> OnChangePower;
-    private readonly Dictionary<PowerEnum, int> powerDic = new Dictionary<PowerEnum, int>();
     public PowerEnum NowPower { get; private set; }
     private void Start()
     {
         foreach (object aValue in    Enum.GetValues(typeof(PowerEnum)))
         {
-            if (!aValue.Equals(PowerEnum.Null))
-                _enumLists.Add((PowerEnum)aValue);
+            _enumLists.Add((PowerEnum)aValue);
+            powerDic.Add((PowerEnum)aValue, 0);
         }
-        
+
     }
-    private void OnEnable()
+    private void Awake()
     {
         Destroy(Instance);
         Instance = this;
@@ -30,6 +30,11 @@ public class PowerManager : MonoBehaviour
     {
         nowIndex = (nowIndex + num) % _enumLists.Count;
         NowPower = _enumLists[nowIndex];
+        while (!HasPower(NowPower))
+        {
+            nowIndex= ++nowIndex% _enumLists.Count;;
+            NowPower = _enumLists[nowIndex];
+        }
         OnChangePower?.Invoke(NowPower);
     }
     public void ChangePower(PowerEnum num)
@@ -41,9 +46,13 @@ public class PowerManager : MonoBehaviour
         }
         OnChangePower?.Invoke(NowPower);
     }
+    public bool HasPower(PowerEnum tenum)
+    {
+        return tenum==PowerEnum.Null || powerDic[tenum] > 0;
+    }
     public void GetPower(PowerEnum ty, int num)
     {
-        if (powerDic.ContainsKey( ty))
+        if (powerDic.ContainsKey(ty))
         {
             powerDic[ ty] += num;
         }

@@ -5,8 +5,9 @@ public class Bee : ABaseControlAble , IChangeWithTime
 
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float MaxDis;
-    private PowerUseAbleComponent powerUseAbleComponent;
     protected float dis;
+    private bool isFired;
+    private PowerUseAbleComponent powerUseAbleComponent;
     protected Rigidbody2D rigidbody2D;
     private void Awake()
     {
@@ -18,21 +19,12 @@ public class Bee : ABaseControlAble , IChangeWithTime
         TimeController.Instance.SubObj(this);
         powerUseAbleComponent.AddCallBack(PowerEnum.Fire, GetFire);
     }
-    private void GetFire()
-    {
-        isFired = true;
-    }
-    bool isFired;
-    public override bool ControllAble()
-    {
-        return isFired;
-    }
     protected void FixedUpdate()
     {
         dis += maxSpeed * Time.fixedDeltaTime;
         if (dis >= MaxDis)
         {
-            
+
         }
     }
     public void ChangeWithWeather(GameTimeEnum time)
@@ -46,6 +38,14 @@ public class Bee : ABaseControlAble , IChangeWithTime
                 gameObject.SetActive(true);
                 break;
         }
+    }
+    private void GetFire()
+    {
+        isFired = true;
+    }
+    public override bool ControllAble()
+    {
+        return isFired;
     }
     protected  void HorizontalMove(float value)
     {

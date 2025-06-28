@@ -39,8 +39,8 @@ namespace ControlAble
         }
         protected virtual void OnUpdate()
         {
-            
-        } 
+
+        }
         protected virtual void OnStart()
         {
         }

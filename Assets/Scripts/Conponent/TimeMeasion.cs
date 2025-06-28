@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 public class TimeMeasion : ABaseControlAble , IChangeWithTime
 {
@@ -14,6 +13,18 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
             BoPian();
         };
     }
+    public void ChangeWithWeather(GameTimeEnum time)
+    {
+        switch (time)
+        {
+            case GameTimeEnum.Day:
+                _animator.SetTrigger("Light");
+                break;
+            case GameTimeEnum.Night:
+                _animator.SetTrigger("Dark");
+                break;
+        }
+    }
     public override void Input(ControlType type, object param)
     {
     }
@@ -26,17 +37,5 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
         TimeController.Instance.ChangeWeatherNext();
         yield return new WaitForSeconds(ConstClass.TIME_CHANGE_TIME);
         LeaveControl();
-    }
-    public void ChangeWithWeather(GameTimeEnum time)
-    {
-        switch (time)
-        {
-            case GameTimeEnum.Day:
-                _animator.SetTrigger("Light");
-                break;
-            case GameTimeEnum.Night:
-                _animator.SetTrigger("Dark");
-                break;
-        }
     }
 }
