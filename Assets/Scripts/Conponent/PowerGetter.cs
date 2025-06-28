@@ -31,6 +31,10 @@
         {
             StartCoroutine(ChangeTime());
         }
+        public override bool ControllAble()
+        {
+            return !drity;
+        }
         protected IEnumerator ChangeTime()
         {
             foreach (var setting in _settings)

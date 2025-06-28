@@ -6,6 +6,14 @@ using UnityEngine;
 public class SlimuComponent : ABaseControlAble
 {
     protected Queue<SingleNode> m_nodeQueue;
+    [SerializeField] protected SingleNode headNode;
+    protected SingleNode nowNode;
+    protected override void Start()
+    {
+        base.Start();
+        nowNode = headNode;
+        m_nodeQueue = new Queue<SingleNode>();
+    }
     public override void Input(ControlType type, object param)
     {
         
@@ -22,6 +30,7 @@ public class SingleNode : MonoBehaviour
     {
         UP,Down,Left,Right
     }
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
     protected SingleNode m_nextNode;
     protected GameObject CreateNode(FourDir dir)
     {
@@ -43,11 +52,13 @@ public class SingleNode : MonoBehaviour
     }
     private void ActiveNode()
     {
-        
+        Debug.Log("激活");
+        _spriteRenderer.gameObject.SetActive( true);
     }
     private void DeletNode()
     {
-        
+       //TODO: 删除
+        Destroy(gameObject);
     }
     private bool CheckNode()
     {

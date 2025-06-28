@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SetControlAble(IControlAble controlAble)
     {
-        if (controlAble == ControlAble) return;
+        if (controlAble == ControlAble || !controlAble.ControllAble()) return;
         if (controlAble != null) ControlAble?.OnRelease?.Invoke();
         ControlAble = controlAble;
         ControlAble?.OnControl?.Invoke();
