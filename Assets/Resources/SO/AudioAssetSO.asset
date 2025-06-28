@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5c0d136dab41049ee8684d0cf29c18, type: 3}
+  m_Name: AudioAssetSO
+  m_EditorClassIdentifier: 
+  clips:
+  - clip: {fileID: 0}
+    name: Fly
+  - clip: {fileID: 0}
+    name: StoneIn
+  - clip: {fileID: 0}
+    name: StoneMove
+  - clip: {fileID: 0}
+    name: CallWater
+  - clip: {fileID: 0}
+    name: CallFire
+  - clip: {fileID: 0}
+    name: WaterTree
+  - clip: {fileID: 0}
+    name: FireTree
+  - clip: {fileID: 0}
+    name: FirePlant
+  - clip: {fileID: 0}
+    name: BABANoise

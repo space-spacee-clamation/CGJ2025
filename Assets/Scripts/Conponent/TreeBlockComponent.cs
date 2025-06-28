@@ -24,6 +24,7 @@ public class TreeBlockComponent : MonoBehaviour
     }
     private IEnumerator DestroySelf()
     {
+        AudioManager.Instance.PlayOnce("FirePlant");
         GameObject bb = Instantiate(boom, transform.position, Quaternion.Euler(-90, 0, 0));
         bb.transform.SetParent(transform);
         yield return new WaitForSeconds(1);

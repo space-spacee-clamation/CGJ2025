@@ -38,10 +38,12 @@ public class Bee : ABaseControlAble , IChangeWithTime
     }
     protected  void HorizontalMove(float value)
     {
+        AudioManager.Instance.PlayOnce("Fly");
         rigidbody2D.velocity = new Vector2(value * maxSpeed, rigidbody2D.velocity.y);
     }
     protected  void VerticalMove(float value)
     {
+        AudioManager.Instance.PlayOnce("Fly");
         rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, value * maxSpeed);
     }
     public override void Input(ControlType type, object param)
