@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Action OnNewLevel;
-    private IControlAble _player;
-    
+
     public LevelMask levelMask;
+    private IControlAble _player;
+    public Action OnNewLevel;
     private void Awake()
     {
         if (Instance == null)

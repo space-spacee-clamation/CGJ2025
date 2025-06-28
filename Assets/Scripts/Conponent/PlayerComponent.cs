@@ -1,6 +1,4 @@
-﻿using System;
-using Cinemachine;
-using ControlAble;
+﻿using ControlAble;
 using UnityEngine;
 public class PlayerComponent : ANormalMove
 {
@@ -11,7 +9,7 @@ public class PlayerComponent : ANormalMove
     }
     protected override void OnStart()
     {
-        
+
         _eye = GetComponentInChildren<Eye>();
     }
     protected override void Fire()
@@ -28,16 +26,26 @@ public class PlayerComponent : ANormalMove
 
     private void OnFire()
     {
-        if (PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
+        if (!PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
+        {
+            PowerUseAbleComponent res = _eye.GetFacingObjComponent<PowerUseAbleComponent>();
+            if (res != null)
+                res.UsePower(PowerManager.Instance.NowPower);
+            else
+            {
+                IControlAble resC = _eye.GetFacingObjComponent<IControlAble>();
+                if (resC != null)
+                {
+                    PowerManager.Instance.ChangePower(PowerEnum.Null);
+                    PlayerController.Instance.SetControlAble(resC);
+                }
+            }
+        }
+        else if (PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
         {
             IControlAble res = _eye.GetFacingObjComponent<IControlAble>();
             PlayerController.Instance.SetControlAble(res);
         }
-        else
-        {
-            PowerUseAbleComponent res = _eye.GetFacingObjComponent<PowerUseAbleComponent>();
-            res?.UsePower(PowerManager.Instance.NowPower);
-        }
-    }
 
+    }
 }

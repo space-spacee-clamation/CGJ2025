@@ -6,10 +6,10 @@ namespace ControlAble
         [SerializeField] private float growUpSpeed;
         [SerializeField] private float maxHight;
         [SerializeField] private float minHight;
-        private float nowHight;
 
         [SerializeField] private PowerUseAbleComponent pwComponent;
         private bool isGrowUp ;
+        private float nowHight;
 
         private void Awake()
         {
@@ -22,43 +22,43 @@ namespace ControlAble
 
         private void Update()
         {
-            if (transform.localScale.y < nowHight-0.05f)
+            if (transform.localScale.y < nowHight - 0.05f)
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.up;
             }
-            if ( transform.localScale.y > nowHight+0.05f)
+            if ( transform.localScale.y > nowHight + 0.05f)
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.down;
             }
         }
         private void GetFire()
         {
+
+        }
+        private void GetWater()
+        {
+
+        }
+        protected override void VerticalMove(float value)
+        {
+            if (nowHight > 0)
+            {
+                GrowUp();
+            }
+            else
+            {
+                GrowDown();
+            }
+        }
+        private void GrowDown()
+        {
             nowHight -= 1;
             if (nowHight < minHight) nowHight = minHight;
         }
-        private void GetWater()
+        private void GrowUp()
         {
             nowHight += 1;
             if (nowHight > maxHight) nowHight = maxHight;
         }
-        //protected override void VerticalMove(float value)
-        //{
-        //    if (nowHight > 0)
-        //    {
-        //        GrowUp();
-        //    }
-        //    else
-        //    {
-        //        GrowDown();
-        //    }
-        //}
-        //private void GrowDown()
-        //{
-
-        //}
-        //private void GrowUp()
-        //{
-
-        //}
     }
 }

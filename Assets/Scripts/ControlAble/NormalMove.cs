@@ -30,9 +30,6 @@ namespace ControlAble
             OnControl += Control;
             rigidbody2D = GetComponent<Rigidbody2D>();
         }
-        protected virtual void OnStart()
-        {
-        }
         private void Update()
         {
             if (tickTime > 0)
@@ -40,14 +37,14 @@ namespace ControlAble
                 tickTime -= Time.deltaTime;
             }
         }
+        protected virtual void OnStart()
+        {
+        }
         protected void Control()
         {
-            rigidbody2D.mass = 1;
         }
         protected void Release()
         {
-            //暂时先这样吧😋
-            rigidbody2D.mass = 1000000;
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
         public override void Input(ControlType type, object param)

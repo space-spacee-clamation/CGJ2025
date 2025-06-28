@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 public class CameraTest : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
@@ -20,7 +18,7 @@ public class CameraTest : MonoBehaviour
                 DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x, Color.white, ConstClass.TIME_CHANGE_TIME);
                 break;
             case GameTimeEnum.Night:
-                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x,Color.gray, ConstClass.TIME_CHANGE_TIME);
+                DOTween.To(() => _camera.backgroundColor, x => _camera.backgroundColor = x, Color.gray, ConstClass.TIME_CHANGE_TIME);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(obj), obj, null);
