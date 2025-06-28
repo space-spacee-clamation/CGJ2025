@@ -58,6 +58,7 @@ public class SlimuComponent : ABaseControlAble
                     node.ActiveNode();
                     nowNode = node;
                     maxCount--;
+                    AudioManager.Instance.PlayOnce("BABANoise");
                 }
                 else
                 {
