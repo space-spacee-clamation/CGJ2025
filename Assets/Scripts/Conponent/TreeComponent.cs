@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 namespace ControlAble
 {
-    public class TreeComponent : ANormalMove
+    public class TreeComponent : ANormalMove , IChangeWithTime
     {
         [SerializeField] private float growUpSpeed;
         [SerializeField] private float maxHight;
@@ -39,9 +40,29 @@ namespace ControlAble
         }
         private void GetWater()
         {
-            nowHight += 1;
-            AudioManager.Instance.PlayOnce("WaterTree");
-            if (nowHight > maxHight) nowHight = maxHight;
+            if (couldWater)
+            {
+                nowHight += 1;
+                AudioManager.Instance.PlayOnce("WaterTree");
+                if (nowHight > maxHight) nowHight = maxHight;
+            }
+            else
+            {
+                DialogManager.Instance.ShowDialog("只能在白天浇水",transform.position);
+            }
+        }
+        private bool couldWater;
+        public void ChangeWithWeather(GameTimeEnum time)
+        {
+            switch (time)
+            {
+                case GameTimeEnum.Day:
+                    couldWater = true;
+                    break;
+                case GameTimeEnum.Night:
+                    couldWater = false;
+                    break;
+            }
         }
     }
 }

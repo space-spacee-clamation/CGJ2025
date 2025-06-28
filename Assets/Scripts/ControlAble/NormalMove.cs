@@ -11,7 +11,6 @@ namespace ControlAble
         [SerializeField] protected Feet _feet;
         [SerializeField] protected float maxSpeed;
         [SerializeField] protected float jumpDis;
-        [SerializeField] protected bool isGround;
         protected Rigidbody2D rigidbody2D;
         /// <summary>
         ///     防止连续按跳跃
@@ -36,7 +35,12 @@ namespace ControlAble
             {
                 tickTime -= Time.deltaTime;
             }
+            OnUpdate();
         }
+        protected virtual void OnUpdate()
+        {
+            
+        } 
         protected virtual void OnStart()
         {
         }
