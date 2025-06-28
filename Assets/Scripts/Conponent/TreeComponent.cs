@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 namespace ControlAble
 {
-    public class TreeComponent : ABaseControlAble
+    public class TreeComponent : ANormalMove
     {
         [SerializeField] private float growUpSpeed;
         [SerializeField] private float maxHight;
         [SerializeField] private float minHight;
+        private float nowHight;
 
         [SerializeField] private PowerUseAbleComponent pwComponent;
         private bool isGrowUp ;
@@ -20,11 +21,11 @@ namespace ControlAble
 
         private void Update()
         {
-            if (isGrowUp && transform.localScale.y < maxHight)
+            if (transform.localScale.y < nowHight-0.05f)
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.up;
             }
-            else if (!isGrowUp && transform.localScale.y > minHight)
+            else if ( transform.localScale.y > minHight+0.05f)
             {
                 transform.localScale += growUpSpeed * Time.deltaTime * Vector3.down;
             }
@@ -38,28 +39,26 @@ namespace ControlAble
             //TODO: 具体确定
             maxHight = 3;
         }
-        public override void Input(ControlType type, object param)
+        protected override void VerticalMove(float value)
         {
-            switch (type)
+            if (nowHight > 0)
             {
-                case ControlType.UP:
-                    GrowUp((float)param);
-                    break;
-                case ControlType.Down:
-                    GrowDown((float)param);
-                    break;
-                case ControlType.Fire:
-                    LeaveControl();
-                    break;
+                GrowUp();
+            }
+            else
+            {
+                GrowDown();
             }
         }
-        private void GrowDown(float f)
+        private void GrowDown()
         {
-            isGrowUp = false;
+            nowHight -= 1;
+            if (nowHight < minHight) nowHight = minHight;
         }
-        private void GrowUp(float o)
+        private void GrowUp()
         {
-            isGrowUp = true;
+            nowHight += 1;
+            if (nowHight > maxHight) nowHight = maxHight;
         }
         public override IControlAble GetFacingObj()
         {

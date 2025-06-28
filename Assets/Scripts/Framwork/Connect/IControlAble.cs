@@ -16,6 +16,7 @@ public interface IControlAble
     public Action OnRelease { get; }
     public void Input(ControlType  type, object  param);
     public IControlAble GetFacingObj();
+    public bool ControllAble();
 }
 public abstract class ABaseControlAble : MonoBehaviour, IControlAble
 {
@@ -29,8 +30,9 @@ public abstract class ABaseControlAble : MonoBehaviour, IControlAble
     }
     public abstract void Input(ControlType type, object param);
     public abstract IControlAble GetFacingObj() ;
-    protected virtual void OnStart()
+    public virtual bool ControllAble()
     {
+        return true;
     }
     protected void LeaveControl()
     {

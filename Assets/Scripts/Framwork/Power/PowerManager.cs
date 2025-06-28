@@ -11,16 +11,10 @@ public class PowerManager : MonoBehaviour
     private int nowIndex  ;
     public Action<PowerEnum> OnChangePower;
     public PowerEnum NowPower { get; private set; }
-    private void Awake()
+    private void OnEnable()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Destroy(Instance);
+        Instance = this;
     }
     private void Start()
     {

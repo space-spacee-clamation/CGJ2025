@@ -17,8 +17,6 @@ public class PlayerComponent : ANormalMove
     {
         OnFire();
     }
-        #region 元素之力！！！
-
     protected override void GetOtherInput(ControlType type, object o)
     {
         if (type == ControlType.Next)
@@ -32,7 +30,7 @@ public class PlayerComponent : ANormalMove
         if (PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
         {
             IControlAble res = _eye.GetFacingObjComponent<IControlAble>();
-            PlayerController.Instance.SetControlAble( res);
+            PlayerController.Instance.SetControlAble(res);
         }
         else
         {
@@ -41,5 +39,4 @@ public class PlayerComponent : ANormalMove
         }
     }
 
-  #endregion
 }

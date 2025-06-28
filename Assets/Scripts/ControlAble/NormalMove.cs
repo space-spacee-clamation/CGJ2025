@@ -27,6 +27,10 @@ namespace ControlAble
             OnStart();
             OnRelease += Release;
             OnControl += Control;
+            rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+        protected virtual void OnStart()
+        {
         }
         private void Update()
         {
