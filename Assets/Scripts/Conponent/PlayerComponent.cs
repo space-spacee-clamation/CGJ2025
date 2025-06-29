@@ -19,7 +19,7 @@ public class PlayerComponent : ANormalMove
     protected override void OnUpdate()
     {
         _animator.SetBool("isJump", !_feet.IsGround);
-        _animator.SetBool("isRun", _feet.IsGround &&  Mathf.Abs(rigidbody2D.velocity.x) >0.1f);
+        _animator.SetBool("isRun", _feet.IsGround &&  Mathf.Abs(rigidbody2D.velocity.x) > 0.1f);
     }
     protected override void GetOtherInput(ControlType type, object o)
     {

@@ -4,11 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AudioAssetSO.asset", menuName = "ScriptableObject/Audio", order = 1)]
 public class AudioAssetSO : ScriptableObject
 {
-    public List<AudioResource> clips ;
+    public List<AudioResourceDataPAre> clips ;
 }
 
 [Serializable]
-public class AudioResource
+public class AudioResourceDataPAre
 {
     public AudioClip clip;
     public string name;

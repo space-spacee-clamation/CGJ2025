@@ -8,7 +8,7 @@ public enum GameTimeEnum
 }
 public class TimeController : MonoBehaviour
 {
-    private readonly List<GameTimeEnum> _setting = new List<GameTimeEnum>
+    [SerializeField] private  List<GameTimeEnum> _setting = new List<GameTimeEnum>
         { GameTimeEnum.Day, GameTimeEnum.Night };
     private int nowIndex ;
     public Action<GameTimeEnum> OnChangeTime;

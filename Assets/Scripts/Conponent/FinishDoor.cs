@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class FinishDoor : ABaseControlAble
 {
-    private bool open = false;
-    private string nextLevel;
-    [SerializeField] GameObject effect;
+    [SerializeField] private GameObject effect;
+    [SerializeField] private string nextLevel;
+    private bool open  ;
     private void Start()
     {
         CollectionManager.Instance.OnFinishCollect += OnFinish;
@@ -20,7 +16,6 @@ public class FinishDoor : ABaseControlAble
     }
     public override void Input(ControlType type, object param)
     {
-        return;
     }
     public override bool ControllAble()
     {
@@ -29,6 +24,6 @@ public class FinishDoor : ABaseControlAble
     private void OnFinish()
     {
         open = true;
-         effect.SetActive( true);
+        effect.SetActive( true);
     }
 }

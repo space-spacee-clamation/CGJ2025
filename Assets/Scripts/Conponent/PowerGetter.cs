@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 [Serializable]
 public class PowerGetSetting
@@ -12,8 +11,8 @@ public class PowerGetSetting
 public class PowerGetter : ABaseControlAble
 {
     [SerializeField] private List<PowerGetSetting> _settings;
-    private bool drity ;
     [SerializeField] private SpriteRenderer light;
+    private bool drity ;
     protected override void Start()
     {
         base.Start();
