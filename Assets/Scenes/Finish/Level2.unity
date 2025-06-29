@@ -3149,6 +3149,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5021809309290720100, guid: 892d5390a8317a54a89e2827a5318cae, type: 3}
+      propertyPath: musicName
+      value: BGM_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021809309290720100, guid: 892d5390a8317a54a89e2827a5318cae, type: 3}
       propertyPath: VirtualCamera
       value: 
       objectReference: {fileID: 1302334225}

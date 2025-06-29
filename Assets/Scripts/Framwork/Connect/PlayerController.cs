@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
         get;
         set ;
     }
+    public string musicName;
     public void Start()
     {
         ControlAble?.OnControl?.Invoke();
         GameManager.Instance.OnNewLevel += StartController;
+        AudioManager.Instance.PlayMusic(musicName, true);
     }
     private void Update()
     {
