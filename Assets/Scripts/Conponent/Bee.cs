@@ -10,6 +10,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
     private bool isFired;
    [SerializeField]  private PowerUseAbleComponent powerUseAbleComponent;
     protected Rigidbody2D rigidbody2D;
+    [SerializeField] private Animator _animator;
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -62,6 +63,8 @@ public class Bee : ABaseControlAble , IChangeWithTime
     private void GetFire()
     {
         AudioManager.Instance.PlayOnce("FlyActive");
+        _animator.Play("Big");
+        rigidbody2D.bodyType=RigidbodyType2D.Dynamic;
         isFired = true;
     }
     public override bool ControllAble()

@@ -6,6 +6,7 @@ public class StoneComponent : ANormalMove
     {
         base.Control();
         AudioManager.Instance.PlayOnce("StoneJiaoHu");
+        DialogManager.Instance.ShowDialog("saki，移动", transform.position);
     }
     protected override void OnUpdate()
     {

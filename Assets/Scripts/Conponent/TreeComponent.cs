@@ -41,11 +41,11 @@ namespace ControlAble
                     break;
                 case 2:
                     renderer.sprite = _sprites[1];
-                    colliderTrans.localScale= Vector3.one+Vector3.up*1.5f;
+                    colliderTrans.localScale= Vector3.one+Vector3.up;
                     break;
                 case 3:
                     renderer.sprite = _sprites[2];
-                    colliderTrans.localScale= Vector3.one+Vector3.up*3f;
+                    colliderTrans.localScale= Vector3.one+Vector3.up*2f;
                     break;
             }
         }
@@ -65,6 +65,7 @@ namespace ControlAble
         {
             nowHight -= 1;
             AudioManager.Instance.PlayOnce("FireTree");
+            DialogManager.Instance.ShowDialog("世界，咀嚼了我", transform.position);
             if (nowHight < minHight) nowHight = minHight;
         }
         private void GetWater()
@@ -73,6 +74,7 @@ namespace ControlAble
             {
                 nowHight += 1;
                 AudioManager.Instance.PlayOnce("WaterTree");
+                DialogManager.Instance.ShowDialog("小树苗，快长高", transform.position);
                 Debug.Log("????");
                 if (nowHight > maxHight) nowHight = maxHight;
             }

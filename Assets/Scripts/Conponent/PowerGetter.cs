@@ -21,6 +21,7 @@ public class PowerGetter : ABaseControlAble
             {
                 BoPian();
                 drity = true;
+                DialogManager.Instance.ShowDialog("感受到了抛瓦！", transform.position);
             }
         };
     }

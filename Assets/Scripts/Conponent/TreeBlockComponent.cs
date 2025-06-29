@@ -25,6 +25,7 @@ public class TreeBlockComponent : MonoBehaviour
     }
     private void GetFire()
     {
+        DialogManager.Instance.ShowDialog("让我们把藤蔓烧成灰", transform.position);
         StartCoroutine(DestroySelf());
     }
     private IEnumerator DestroySelf()

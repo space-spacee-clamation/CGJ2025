@@ -35,6 +35,8 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
     protected IEnumerator ChangeTime()
     {
         TimeController.Instance.ChangeWeatherNext();
+        DialogManager.Instance.ShowDialog("Made in Haven！", transform.position);
+
         yield return new WaitForSeconds(ConstClass.TIME_CHANGE_TIME);
         LeaveControl();
     }

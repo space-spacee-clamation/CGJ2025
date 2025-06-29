@@ -14,6 +14,9 @@ public class SlimuComponent : ABaseControlAble
         m_nodeQueue = new Stack<SingleNode>();
         headNode.ActiveNode();
         m_nodeQueue.Push(headNode);
+        OnControl+=() => {
+            DialogManager.Instance.ShowDialog("我裂开了", transform.position);
+        };
     }
     private void Update()
     {
