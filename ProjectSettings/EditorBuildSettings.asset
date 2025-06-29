@@ -18,8 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/art.unity
     guid: 34a3c035b5c9abc4b8fbf2e31a37d387
   - enabled: 0
+    path: Assets/Scenes/Finish/Menu.unity
+    guid: 7816144acec14ec41837fb332a97bbe9
+  - enabled: 0
     path: Assets/Scenes/Test/TestSlim.unity
     guid: 7d704cdb6ccf9f249b306af1b15df44a
+  - enabled: 1
+    path: Assets/Scenes/NewMenu.unity
+    guid: 72375ab3d00dc514bbca32fd86e5f79d
   - enabled: 1
     path: Assets/Scenes/Finish/Level1.unity
     guid: 6a758085331dd814f817408b01a6d482
