@@ -24,19 +24,21 @@ public class Eye : MonoBehaviour
     }
     public  T GetFacingObjComponent<T>()
     {
-        RaycastHit2D[] res = Physics2D.CircleCastAll(eyePoint.position, viewDis, MathF.Sign(transform.localScale.x) * Vector3.right, MathF.Cos(MathF.Sign(transform.localScale.x) * range / 360 * 2 * MathF.PI));
+        RaycastHit2D[] res = Physics2D.CircleCastAll(eyePoint.position, viewDis, MathF.Sign(transform.localScale.x) * Vector3.right, MathF.Cos( range / 360 * 2 * MathF.PI));
         T minDisRes = default;
         float minDIS = float.MaxValue;
         T  bodyCo = gameObject.GetComponent<T>();
         foreach (RaycastHit2D result in res)
         {
+            float xDis = ((Vector3)result.point - eyePoint.position).x;
+            if( MathF.Sign(xDis)==MathF.Sign(transform.localScale.x))
             if (result.collider.TryGetComponent(out T able))
             {
                 if (bodyCo != null && bodyCo.Equals(able)) continue;
-                if (minDIS >  result.distance&& result.distance<viewDis)
+                if (minDIS >  xDis&& result.distance<viewDis)
                 {
                     minDisRes = able;
-                    minDIS = result.distance;
+                    minDIS = xDis;
                 }
             }
         }
