@@ -16,7 +16,7 @@ MonoBehaviour:
   - clip: {fileID: 0}
     name: Fly
   - clip: {fileID: 0}
-    name: StoneIn
+    name: FlyDisape
   - clip: {fileID: 0}
     name: StoneMove
   - clip: {fileID: 0}

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public LevelMask levelMask;
     private IControlAble _player;
     public Action OnNewLevel;
+    public Transform PlayerTran{get;private set;}
     private void Awake()
     {
         if (Instance == null)
@@ -29,9 +30,10 @@ public class GameManager : MonoBehaviour
     {
         levelMask.Close();
     }
-    public void SubPlayer(IControlAble controlAble)
+    public void SubPlayer(IControlAble controlAble,Transform transform)
     {
         _player = controlAble;
+        PlayerTran = transform;
     }
     public IControlAble GetPlayer()
     {

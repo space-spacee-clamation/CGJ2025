@@ -6,7 +6,7 @@ public class PlayerComponent : ANormalMove
     [SerializeField] private Animator _animator;
     private void OnEnable()
     {
-        GameManager.Instance.SubPlayer(this);
+        GameManager.Instance.SubPlayer(this,transform);
     }
     protected override void OnStart()
     {

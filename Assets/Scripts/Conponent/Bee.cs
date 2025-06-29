@@ -7,7 +7,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
     [SerializeField] protected float MaxDis;
    [SerializeField]  protected float dis;
     private bool isFired;
-    private PowerUseAbleComponent powerUseAbleComponent;
+   [SerializeField]  private PowerUseAbleComponent powerUseAbleComponent;
     protected Rigidbody2D rigidbody2D;
     private void Awake()
     {
@@ -21,11 +21,17 @@ public class Bee : ABaseControlAble , IChangeWithTime
     }
     protected void FixedUpdate()
     {
-        dis += maxSpeed * Time.fixedDeltaTime;
+        dis += rigidbody2D.velocity.magnitude * Time.fixedDeltaTime;
         if (dis >= MaxDis)
         {
-            Destroy(gameObject);
+            Finish();
         }
+    }
+    private void Finish()
+    {
+        LeaveControl();
+        GameManager.Instance.PlayerTran.position = transform.position;
+        Destroy(gameObject);
     }
     public void ChangeWithWeather(GameTimeEnum time)
     {
