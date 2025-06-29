@@ -27,6 +27,12 @@ namespace ControlAble
             OnStart();
             OnRelease += Release;
             OnControl += Control;
+            OnRelease += () => {
+                gameObject.tag = "Untagged";
+            };
+            OnControl += () => {
+                gameObject.tag = "Player";
+            };
             rigidbody2D = GetComponent<Rigidbody2D>();
         }
         private void Update()

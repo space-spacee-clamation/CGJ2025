@@ -19,6 +19,6 @@ public class DialogManager : MonoBehaviour
     {
         GameObject go = Instantiate(Dialog.gameObject, _canvas.transform);
         go.GetComponent<DialogBox>().Init(pos, massage);
-        go.GetComponent<DialogBox>().Show(massage.Length * 0.4f);
+        go.GetComponent<DialogBox>().Show(massage.Length * 0.7f);
     }
 }
