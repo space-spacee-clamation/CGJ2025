@@ -26,7 +26,7 @@ public class PlayerComponent : ANormalMove
     {
         _animator.SetBool("isJump", !_feet.IsGround);
         _animator.SetBool("isRun", _feet.IsGround &&  Mathf.Abs(rigidbody2D.velocity.x) > 0.1f);
-        if ( Mathf.Abs(rigidbody2D.velocity.x) > 0.3f)
+        if ( Mathf.Abs(rigidbody2D.velocity.x) > 0.3f && _feet.IsGround)
         {
             switch ( PowerManager.Instance.NowPower)
             {
