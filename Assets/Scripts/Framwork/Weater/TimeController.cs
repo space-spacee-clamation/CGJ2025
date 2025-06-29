@@ -35,10 +35,6 @@ public class TimeController : MonoBehaviour
         OnChangeTime += obj.ChangeWithWeather;
         obj.ChangeWithWeather(GameTime);
     }
-    public void UnSubObj(IChangeWithTime obj)
-    {
-        OnChangeTime -= obj.ChangeWithWeather;
-    }
     private void ChangeWeather(int index)
     {
         nowIndex = index;

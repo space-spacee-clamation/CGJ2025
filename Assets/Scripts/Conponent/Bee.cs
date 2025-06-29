@@ -30,13 +30,13 @@ public class Bee : ABaseControlAble , IChangeWithTime
     protected void FixedUpdate()
     {
         dis += rigidbody2D.velocity.magnitude * Time.fixedDeltaTime;
-    }
-    private void Update()
-    {
         if (dis >= MaxDis)
         {
             Finish();
         }
+    }
+    private void Update()
+    {
         if (rigidbody2D.velocity.magnitude<0.4f)
         {
             AudioManager.Instance.StopSfx("Fly");
@@ -46,8 +46,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
     {
         LeaveControl();
         GameManager.Instance.PlayerTran.position = transform.position;
-        TimeController.Instance.UnSubObj( this);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public void ChangeWithWeather(GameTimeEnum time)
     {
