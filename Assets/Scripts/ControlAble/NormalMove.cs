@@ -101,7 +101,12 @@ namespace ControlAble
                 float jumpVelocity = Mathf.Sqrt(-2 * gravity * jumpDis);
                 rigidbody2D.AddForce(new Vector2(0,  jumpVelocity), ForceMode2D.Impulse);
                 tickTime = 0.5f;
+                OnJump();
             }
+        }
+        protected virtual void OnJump()
+        {
+           
         }
         protected virtual void HorizontalMove(float  value)
         {

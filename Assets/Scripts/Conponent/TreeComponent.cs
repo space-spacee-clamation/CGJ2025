@@ -13,6 +13,11 @@ namespace ControlAble
         private bool isGrowUp ;
         private float nowHight;
 
+        protected override void Control()
+        {
+            base.Control();
+            AudioManager.Instance.PlayOnce("ControlTree");
+        }
         /// <summary>
         /// 三个状态
         /// </summary>

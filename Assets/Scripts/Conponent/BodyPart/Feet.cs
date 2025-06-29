@@ -10,12 +10,12 @@ public class Feet : MonoBehaviour
     public void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLen, layerMask);
-        if (hit.collider != null)
+        if ( !IsGround && hit.collider != null)
         {
             OnGround?.Invoke();
             IsGround = true;
         }
-        else if (IsGround)
+        else if (IsGround&& hit.collider == null)
         {
             OnAir?.Invoke();
             IsGround = false;

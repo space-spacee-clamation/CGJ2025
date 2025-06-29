@@ -13,6 +13,7 @@ public class FinishDoor : ABaseControlAble
     private void Next()
     {
         GameManager.Instance.LoadLevel(nextLevel);
+        AudioManager.Instance.PlayOnce("Pass");
     }
     public override void Input(ControlType type, object param)
     {

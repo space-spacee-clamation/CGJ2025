@@ -15,11 +15,11 @@ MonoBehaviour:
   clips:
   - clip: {fileID: 8300000, guid: ba112f7306218c544b9b7be8d1c49cf3, type: 3}
     name: Fly
-  - clip: {fileID: 8300000, guid: b2e3ab95a95feee4794929407647ea00, type: 3}
+  - clip: {fileID: 8300000, guid: 570370aabf5f26a438d2ffbbbf20963a, type: 3}
     name: FlyActive
   - clip: {fileID: 8300000, guid: 1efa78aca638dc849b848c921ca78388, type: 3}
     name: StoneJiaoHu
-  - clip: {fileID: 8300000, guid: 5a890ae056b4c4c45b714cb802221355, type: 3}
+  - clip: {fileID: 8300000, guid: 5011e89965ce9f34395a1eff2f7ecfc3, type: 3}
     name: StoneMove
   - clip: {fileID: 8300000, guid: eb51d1dfac8214a42b50548dad246b55, type: 3}
     name: StoneEdge
@@ -31,11 +31,31 @@ MonoBehaviour:
     name: MoveWithWater
   - clip: {fileID: 8300000, guid: 1fb1e0500a18ec048925fc0d5e6b5313, type: 3}
     name: MoveWithFire
-  - clip: {fileID: 8300000, guid: be9b0b38bdbc48f49bab2d4a928ffb5d, type: 3}
+  - clip: {fileID: 8300000, guid: 1703d25a89c149548b7287c00d29f066, type: 3}
     name: WaterTree
   - clip: {fileID: 8300000, guid: d1ceb354b2cb48b458a8e8f645aecaac, type: 3}
     name: FireTree
   - clip: {fileID: 0}
     name: ShiDorp
-  - clip: {fileID: 8300000, guid: 4dd2e5a56c3c15a4fa337bf7b3741f14, type: 3}
+  - clip: {fileID: 8300000, guid: 1c8ca7073d79c884fbfa527c11eb1ed2, type: 3}
     name: Shi
+  - clip: {fileID: 8300000, guid: e69e64bfa4589284ca92e615a148affe, type: 3}
+    name: PlayerJump
+  - clip: {fileID: 8300000, guid: 16c936aa798c27243b0b3c15b2437be4, type: 3}
+    name: PlayerDown
+  - clip: {fileID: 8300000, guid: 130570faec4b44c4c9b61fb3b589807b, type: 3}
+    name: PlayerWalk1
+  - clip: {fileID: 8300000, guid: 153713aaee6434a40923e863eedb3be7, type: 3}
+    name: PlayerWalk2
+  - clip: {fileID: 8300000, guid: b5ab34e30eb80b24b915ce67c0c09c01, type: 3}
+    name: GetPower
+  - clip: {fileID: 8300000, guid: 20f499766a1624441bfafb6f26017a90, type: 3}
+    name: ControlTree
+  - clip: {fileID: 8300000, guid: dc72920d221ef3d4cb93b5c19655b283, type: 3}
+    name: Click
+  - clip: {fileID: 8300000, guid: 922695f50c11a834dac16dfae7474df6, type: 3}
+    name: Choice
+  - clip: {fileID: 8300000, guid: 04825e13371b95841a63cbad551d32e3, type: 3}
+    name: Pass
+  - clip: {fileID: 8300000, guid: 2bab840817a60ba41803656d11878f66, type: 3}
+    name: MainClick
