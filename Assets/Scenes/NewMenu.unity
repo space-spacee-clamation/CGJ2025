@@ -366,6 +366,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &466582226
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +501,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466582226}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!1 &479970128
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +515,10 @@ GameObject:
   - component: {fileID: 479970132}
   - component: {fileID: 479970131}
   - component: {fileID: 479970130}
+<<<<<<< HEAD
   - component: {fileID: 479970133}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
   m_Layer: 5
   m_Name: w
   m_TagString: Untagged
@@ -583,6 +589,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 479970131}
   m_OnClick:
     m_PersistentCalls:
+<<<<<<< HEAD
       m_Calls:
       - m_Target: {fileID: 479970133}
         m_TargetAssemblyTypeName: TestNext, Assembly-CSharp
@@ -596,6 +603,9 @@ MonoBehaviour:
           m_StringArgument: Level1
           m_BoolArgument: 0
         m_CallState: 2
+=======
+      m_Calls: []
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!114 &479970131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,6 +644,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479970128}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!114 &479970133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +708,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!1 &540098929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1144,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1030018034}
   m_OnClick:
     m_PersistentCalls:
+<<<<<<< HEAD
       m_Calls:
       - m_Target: {fileID: 1140402340}
         m_TargetAssemblyTypeName: TestNext, Assembly-CSharp
@@ -1144,6 +1158,9 @@ MonoBehaviour:
           m_StringArgument: Level1
           m_BoolArgument: 0
         m_CallState: 2
+=======
+      m_Calls: []
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!114 &1030018034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,6 +1199,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030018031}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &1140402339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1346,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 3.1296299}
   m_SizeDelta: {x: 899.87, y: 285.63}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!1 &1391990570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,10 +1396,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
+=======
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1431,6 +1458,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< HEAD
 --- !u!1 &1596411496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +2026,8 @@ Transform:
   - {fileID: 1892381850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!1 &1682211741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,6 +2353,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857973958}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &1892381846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,6 +2632,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
 --- !u!1001 &2743595600707226301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2743,5 +2776,8 @@ SceneRoots:
   - {fileID: 638016776}
   - {fileID: 1391990574}
   - {fileID: 206022031}
+<<<<<<< HEAD
   - {fileID: 1140402344}
   - {fileID: 1596411505}
+=======
+>>>>>>> 6635e0116ae924665f99819e3fb0db450b294e55
