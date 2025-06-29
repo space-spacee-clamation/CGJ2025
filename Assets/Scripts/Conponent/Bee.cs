@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bee : ABaseControlAble , IChangeWithTime
@@ -18,6 +19,12 @@ public class Bee : ABaseControlAble , IChangeWithTime
         base.Start();
         TimeController.Instance.SubObj(this);
         powerUseAbleComponent.AddCallBack(PowerEnum.Fire, GetFire);
+        OnRelease += () => {
+            gameObject.tag = "Untagged";
+        };
+        OnControl += () => {
+            gameObject.tag = "Player";
+        };
     }
     protected void FixedUpdate()
     {
@@ -27,11 +34,18 @@ public class Bee : ABaseControlAble , IChangeWithTime
             Finish();
         }
     }
+    private void Update()
+    {
+        if (rigidbody2D.velocity.magnitude<0.4f)
+        {
+            AudioManager.Instance.StopSfx("Fly");
+        }
+    }
     private void Finish()
     {
         LeaveControl();
         GameManager.Instance.PlayerTran.position = transform.position;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public void ChangeWithWeather(GameTimeEnum time)
     {
@@ -47,6 +61,7 @@ public class Bee : ABaseControlAble , IChangeWithTime
     }
     private void GetFire()
     {
+        AudioManager.Instance.PlayOnce("FlyActive");
         isFired = true;
     }
     public override bool ControllAble()

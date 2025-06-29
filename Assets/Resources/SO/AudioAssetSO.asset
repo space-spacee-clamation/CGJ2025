@@ -13,21 +13,29 @@ MonoBehaviour:
   m_Name: AudioAssetSO
   m_EditorClassIdentifier: 
   clips:
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ba112f7306218c544b9b7be8d1c49cf3, type: 3}
     name: Fly
-  - clip: {fileID: 0}
-    name: FlyDisape
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b2e3ab95a95feee4794929407647ea00, type: 3}
+    name: FlyActive
+  - clip: {fileID: 8300000, guid: 1efa78aca638dc849b848c921ca78388, type: 3}
+    name: StoneJiaoHu
+  - clip: {fileID: 8300000, guid: 5a890ae056b4c4c45b714cb802221355, type: 3}
     name: StoneMove
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: eb51d1dfac8214a42b50548dad246b55, type: 3}
+    name: StoneEdge
+  - clip: {fileID: 8300000, guid: 4c23975e98c75ed4a97ec00a0804e6e9, type: 3}
     name: CallWater
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 319242dce890f4546b25bb57361c1e78, type: 3}
     name: CallFire
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8189a619227abcb4b9b1feeda1442a8c, type: 3}
+    name: MoveWithWater
+  - clip: {fileID: 8300000, guid: 1fb1e0500a18ec048925fc0d5e6b5313, type: 3}
+    name: MoveWithFire
+  - clip: {fileID: 8300000, guid: be9b0b38bdbc48f49bab2d4a928ffb5d, type: 3}
     name: WaterTree
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d1ceb354b2cb48b458a8e8f645aecaac, type: 3}
     name: FireTree
   - clip: {fileID: 0}
-    name: FirePlant
-  - clip: {fileID: 0}
-    name: BABANoise
+    name: ShiDorp
+  - clip: {fileID: 8300000, guid: 4dd2e5a56c3c15a4fa337bf7b3741f14, type: 3}
+    name: Shi

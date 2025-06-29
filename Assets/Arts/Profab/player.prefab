@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feet: {fileID: 7724510728563787757}
   maxSpeed: 2
-  jumpDis: 2.1
+  jumpDis: 2.6
   _eye: {fileID: 2154131332870507000}
   _animator: {fileID: 4891207705321612554}
 --- !u!114 &2154131332870507000
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyePoint: {fileID: 1352604142802601367}
   range: 60
-  viewDis: 3
+  viewDis: 4
   _mask:
     serializedVersion: 2
     m_Bits: 0
@@ -570,11 +570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8235290025474034193, guid: d77a0bb08eba2be4bb7df510662a1479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2131042
+      value: -0.6259004
       objectReference: {fileID: 0}
     - target: {fileID: 8235290025474034193, guid: d77a0bb08eba2be4bb7df510662a1479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5019113
+      value: -0.09827477
       objectReference: {fileID: 0}
     - target: {fileID: 8235290025474034193, guid: d77a0bb08eba2be4bb7df510662a1479, type: 3}
       propertyPath: m_LocalRotation.w
