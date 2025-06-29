@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.81, y: -0.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6690176270659653497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,14 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91231aec616c1c49819a91b225e0434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 0}
   _spriteRenderer: {fileID: 3196984804933015338}
   pars:
   - _powerEnum: 0
     _sprite: {fileID: 0}
   - _powerEnum: 1
-    _sprite: {fileID: 21300000, guid: af278778f4875e64281d6765c3528c0b, type: 3}
+    _sprite: {fileID: 21300000, guid: 88046ff502a67e74dafd6901390c692b, type: 3}
   - _powerEnum: 2
-    _sprite: {fileID: 21300000, guid: 7951aecef99f3be4f80187fdb12f319d, type: 3}
+    _sprite: {fileID: 21300000, guid: 88046ff502a67e74dafd6901390c692b, type: 3}
 --- !u!1 &3594185661158232846
 GameObject:
   m_ObjectHideFlags: 0

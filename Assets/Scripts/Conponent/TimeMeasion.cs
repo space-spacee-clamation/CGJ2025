@@ -1,13 +1,12 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 public class TimeMeasion : ABaseControlAble , IChangeWithTime
 {
-
-    private Animator _animator;
+    public SpriteRenderer Renderer;
     protected override void Start()
     {
         base.Start();
-        _animator = GetComponent<Animator>();
         TimeController.Instance.SubObj(this);
         OnControl += () => {
             BoPian();
@@ -18,10 +17,10 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
         switch (time)
         {
             case GameTimeEnum.Day:
-                _animator.SetBool("turnDark",false);
+                Renderer.DOFade(1, 0.5f);
                 break;
             case GameTimeEnum.Night:
-                _animator.SetBool("turnDark",true);
+                Renderer.DOFade(0, 0.5f);
                 break;
         }
     }
@@ -36,7 +35,6 @@ public class TimeMeasion : ABaseControlAble , IChangeWithTime
     {
         TimeController.Instance.ChangeWeatherNext();
         DialogManager.Instance.ShowDialog("Made in Haven！", transform.position);
-
         yield return new WaitForSeconds(ConstClass.TIME_CHANGE_TIME);
         LeaveControl();
     }

@@ -6,7 +6,6 @@ public class CollectObject : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             CollectionManager.Instance.Collection( this);
-            DialogManager.Instance.ShowDialog("啊啊啊啊啊啊啊啊", transform.position);
         }
     }
 }
