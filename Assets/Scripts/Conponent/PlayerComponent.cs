@@ -41,7 +41,6 @@ public class PlayerComponent : ANormalMove
 
                     AudioManager.Instance.StopSfx("MoveWithWater");
                     AudioManager.Instance.StopSfx("MoveWithFire");
-            
         }
     }
     protected override void GetOtherInput(ControlType type, object o)
@@ -68,7 +67,7 @@ public class PlayerComponent : ANormalMove
                 }
             }
         }
-        else if (PowerManager.Instance.NowPower.Equals(PowerEnum.Null))
+        else
         {
             IControlAble res = _eye.GetFacingObjComponent<IControlAble>();
             PlayerController.Instance.SetControlAble(res);

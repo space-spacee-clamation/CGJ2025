@@ -21,7 +21,7 @@ public class SingleNode : MonoBehaviour
     [SerializeField] protected Animator _animator;
     public CreatState CreateNode(FourDir dir, out SingleNode node)
     {
-        Vector3 temp =  GetPos( dir)+Vector3.forward;
+        Vector3 temp =  GetPos( dir);
         GameObject ga = Instantiate(prefabNode, temp, GetRot(dir));
         ga.transform.SetParent(transform,true);
         SingleNode re = ga.GetComponent<SingleNode>();

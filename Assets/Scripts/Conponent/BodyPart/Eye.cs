@@ -30,14 +30,15 @@ public class Eye : MonoBehaviour
         T  bodyCo = gameObject.GetComponent<T>();
         foreach (RaycastHit2D result in res)
         {
-            if( MathF.Sign(((Vector3)result.point-eyePoint.position).x)==MathF.Sign(transform.localScale.x))
+            float xDis = ((Vector3)result.point - eyePoint.position).x;
+            if( MathF.Sign(xDis)==MathF.Sign(transform.localScale.x))
             if (result.collider.TryGetComponent(out T able))
             {
                 if (bodyCo != null && bodyCo.Equals(able)) continue;
-                if (minDIS >  result.distance&& result.distance<viewDis)
+                if (minDIS >  xDis&& result.distance<viewDis)
                 {
                     minDisRes = able;
-                    minDIS = result.distance;
+                    minDIS = xDis;
                 }
             }
         }
